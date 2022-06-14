@@ -35,6 +35,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__bio {
@@ -48,6 +49,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__button {
@@ -86,7 +88,7 @@
 .profile__image {
   margin: 0 auto;
   border-radius: 50%;
-  width: fit-content;
+  width: 127px;
   height: 127px;
 }
 

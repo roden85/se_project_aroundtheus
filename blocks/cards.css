@@ -17,7 +17,7 @@
 
 .cards__list-image {
   width: 100%;
-  height: 100%;
+  height: 282px;
 }
 
 .cards__list-content {
@@ -38,11 +38,13 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 1.2;
+  max-width: calc(282px - 40px + 21px);
 }
 
 .cards__list-content-button {
   background: none;
   border: none;
+  padding: 0;
 }
 
 .cards__list-content-button:hover {

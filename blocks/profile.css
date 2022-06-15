@@ -118,7 +118,9 @@
   .profile__name {
     font-size: 22px;
     line-height: 0.9;
+    max-width: calc(266px - (18px + 18px));
   }
+
   .profile__bio {
     font-size: 14px;
     line-height: 0.8;

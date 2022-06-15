@@ -115,6 +115,10 @@
     margin: 26px auto auto 0;
   }
 
+  .profile__header {
+    gap: 10px;
+  }
+
   .profile__name {
     font-size: 22px;
     line-height: 0.9;

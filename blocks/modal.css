@@ -72,6 +72,7 @@
 }
 
 .modal__form-input {
+  outline: none;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;

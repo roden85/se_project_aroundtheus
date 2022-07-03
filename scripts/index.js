@@ -38,6 +38,7 @@ editButton.addEventListener("click", editProfile);
 
 function exitEditor() {
   closeButtonContainer.classList.add("modal__opened");
+  cd;
 }
 
 closeButton.addEventListener("click", exitEditor);

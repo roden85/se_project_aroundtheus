@@ -25,10 +25,13 @@ const initialCards = [
   },
 ];
 
-let container = document.querySelector(".main");
-let editButton = container.querySelector(".profile__button-edit");
-let closeButtonContainer = document.querySelector(".modal");
-let closeButton = closeButtonContainer.querySelector(".modal__close-button");
+const container = document.querySelector(".main");
+const editButton = container.querySelector(".profile__button-edit");
+const closeButtonContainer = document.querySelector(".modal");
+const closeButton = closeButtonContainer.querySelector(".modal__close-button");
+const profileEditForm = document.querySelector("#modal-profile-form");
+const profileNameEl = document.querySelector(".profile__name");
+const profileBioEl = document.querySelector(".profile__bio");
 
 function editProfile() {
   closeButtonContainer.classList.remove("modal__opened");
@@ -41,3 +44,14 @@ function exitEditor() {
 }
 
 closeButton.addEventListener("click", exitEditor);
+
+profileEditForm.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  const nameValue = evt.target.name.value;
+  const bioValue = evt.target.description.value;
+
+  profileNameEl.textContent = nameValue;
+  profileBioEl.textContent = bioValue;
+
+  exitEditor();
+});

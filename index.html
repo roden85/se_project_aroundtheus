@@ -38,134 +38,7 @@
         ></button>
       </section>
       <section class="cards">
-        <ul class="cards__list">
-          <li class="cards__list-item">
-            <img
-              src="images/yosemite-valley.jpg"
-              alt="Yosemite Valley"
-              class="cards__list-image"
-            />
-            <div class="cards__list-content">
-              <h2 class="cards__list-content-title">Yosemite Valley</h2>
-              <button
-                class="cards__list-content-button"
-                type="button"
-                aria-label=""
-              >
-                <img
-                  src="images/likebutton.svg"
-                  alt="Like Button"
-                  class="cards__list-button-list"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="cards__list-item">
-            <img
-              src="images/lake-louise.png"
-              alt="Lake Louise"
-              class="cards__list-image"
-            />
-            <div class="cards__list-content">
-              <h2 class="cards__list-content-title">Lake Louise</h2>
-              <button
-                class="cards__list-content-button"
-                type="button"
-                aria-label=""
-              >
-                <img
-                  src="images/likebutton.svg"
-                  alt="Like Button"
-                  class="cards__list-button-heart"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="cards__list-item">
-            <img
-              src="images/bald-mountains.png"
-              alt="Bald Mountains"
-              class="cards__list-image"
-            />
-            <div class="cards__list-content">
-              <h2 class="cards__list-content-title">Bald Mountains</h2>
-              <button
-                class="cards__list-content-button"
-                type="button"
-                aria-label=""
-              >
-                <img
-                  src="images/likebutton.svg"
-                  alt="Like Button"
-                  class="cards__list-button-heart"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="cards__list-item">
-            <img
-              src="images/latemar.png"
-              alt="Latemar"
-              class="cards__list-image"
-            />
-            <div class="cards__list-content">
-              <h2 class="cards__list-content-title">Latemar</h2>
-              <button
-                class="cards__list-content-button"
-                type="button"
-                aria-label=""
-              >
-                <img
-                  src="images/likebutton.svg"
-                  alt="Like Button"
-                  class="cards__list-button-heart"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="cards__list-item">
-            <img
-              src="images/vanoise-national-park.png"
-              alt="Vanoise National Park"
-              class="cards__list-image"
-            />
-            <div class="cards__list-content">
-              <h2 class="cards__list-content-title">Vanoise National Park</h2>
-              <button
-                class="cards__list-content-button"
-                type="button"
-                aria-label=""
-              >
-                <img
-                  src="images/likebutton.svg"
-                  alt="Like Button"
-                  class="cards__list-button-heart"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="cards__list-item">
-            <img
-              src="images/lago-di-braies.png"
-              alt="Lago Di Braies"
-              class="cards__list-image"
-            />
-            <div class="cards__list-content">
-              <h2 class="cards__list-content-title">Lago Di Braies</h2>
-              <button
-                class="cards__list-content-button"
-                type="button"
-                aria-label=""
-              >
-                <img
-                  src="images/likebutton.svg"
-                  alt="Like Button"
-                  class="cards__list-button-heart"
-                />
-              </button>
-            </div>
-          </li>
-        </ul>
+        <ul class="cards__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -176,13 +49,18 @@
       <div class="modal__container">
         <button class="modal__close-button"></button>
         <h3 class="modal__header">Edit profile</h3>
-        <form action="#" class="modal__form" id="editProfileForm" name="form">
+        <form
+          action="#"
+          class="modal__form"
+          id="modal-profile-form"
+          name="form"
+        >
           <fieldset class="modal__fieldset">
             <input
               type="text"
               class="modal__form-input"
               id="profile-name"
-              name="profile-name"
+              name="name"
               placeholder="Jacques Cousteau"
               required
             />
@@ -190,7 +68,7 @@
               type="text"
               class="modal__form-input"
               id="profile-bio"
-              name="profile-bio"
+              name="description"
               placeholder="Explorer"
               required
             />
@@ -208,6 +86,26 @@
         </form>
       </div>
     </section>
+
+    <template id="cards-template">
+      <li class="cards__list-item">
+        <img src="" alt="" class="cards__list-image" />
+        <div class="cards__list-content">
+          <h2 class="cards__list-content-title"></h2>
+          <button
+            class="cards__list-content-button"
+            type="button"
+            aria-label=""
+          >
+            <img
+              src="images/likebutton.svg"
+              alt="Like Button"
+              class="cards__list-button-list"
+            />
+          </button>
+        </div>
+      </li>
+    </template>
 
     <script src="scripts/index.js"></script>
   </body>

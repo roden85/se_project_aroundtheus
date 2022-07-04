@@ -32,16 +32,28 @@ const closeButton = closeButtonContainer.querySelector(".modal__close-button");
 const profileEditForm = document.querySelector("#modal-profile-form");
 const profileNameEl = document.querySelector(".profile__name");
 const profileBioEl = document.querySelector(".profile__bio");
+const cardsList = document.querySelector(".cards__list");
 
 function editProfile() {
   closeButtonContainer.classList.remove("modal__opened");
 }
 
-editButton.addEventListener("click", editProfile);
-
 function exitEditor() {
   closeButtonContainer.classList.add("modal__opened");
 }
+
+function getCardElement(data) {
+  const cardElement = document.querySelector("#cards-template").content;
+  const cards = cardElement.querySelector(".cards__list-item").cloneNode(true);
+  const cardImage = cards.querySelector(".cards__list-image");
+  const cardTitle = cards.querySelector(".cards__list-content-title");
+  cardTitle.textContent = data.name;
+  cardImage.setAttribute("src", data.link);
+  cardImage.setAttribute("alt", `${data.name}`);
+  cardsList.append(cards);
+}
+
+editButton.addEventListener("click", editProfile);
 
 closeButton.addEventListener("click", exitEditor);
 
@@ -54,4 +66,8 @@ profileEditForm.addEventListener("submit", function (evt) {
   profileBioEl.textContent = bioValue;
 
   exitEditor();
+});
+
+initialCards.forEach(function (data) {
+  getCardElement(data);
 });

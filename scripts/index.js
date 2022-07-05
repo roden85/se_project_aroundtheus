@@ -26,20 +26,24 @@ const initialCards = [
 ];
 
 const container = document.querySelector(".main");
-const editButton = container.querySelector(".profile__button-edit");
-const closeButtonContainer = document.querySelector(".modal");
-const closeButton = closeButtonContainer.querySelector(".modal__close-button");
+const profileEditButton = container.querySelector(".profile__button-edit");
+const profileFormContainer = document.querySelector(".modal");
+const formCloseButton = profileFormContainer.querySelector(
+  ".modal__close-button"
+);
 const profileEditForm = document.querySelector("#modal-profile-form");
-const profileNameEl = document.querySelector(".profile__name");
-const profileBioEl = document.querySelector(".profile__bio");
+const profileNameElement = document.querySelector(".profile__name");
+const profileDescriptionElement = document.querySelector(".profile__bio");
 const cardsList = document.querySelector(".cards__list");
+const formNameElement = document.querySelector("#profile-name");
+const formDescriptionElement = document.querySelector("#profile-bio");
 
-function editProfile() {
-  closeButtonContainer.classList.remove("modal__opened");
+function openPopup() {
+  profileFormContainer.classList.remove("modal_closed");
 }
 
-function exitEditor() {
-  closeButtonContainer.classList.add("modal__opened");
+function closePopup() {
+  profileFormContainer.classList.add("modal_closed");
 }
 
 function getCardElement(data) {
@@ -53,21 +57,19 @@ function getCardElement(data) {
   cardsList.append(cards);
 }
 
-editButton.addEventListener("click", editProfile);
+profileEditButton.addEventListener("click", openPopup);
 
-closeButton.addEventListener("click", exitEditor);
+formCloseButton.addEventListener("click", closePopup);
 
 profileEditForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const nameValue = evt.target.name.value;
-  const bioValue = evt.target.description.value;
+  const descriptionValue = evt.target.description.value;
 
-  profileNameEl.textContent = nameValue;
-  profileBioEl.textContent = bioValue;
+  profileNameElement.textContent = nameValue;
+  profileDescriptionElement.textContent = descriptionValue;
 
-  exitEditor();
+  closePopup();
 });
 
-initialCards.forEach(function (data) {
-  getCardElement(data);
-});
+initialCards.forEach(getCardElement);

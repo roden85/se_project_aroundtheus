@@ -39,6 +39,9 @@ const formNameElement = document.querySelector("#profile-name");
 const formDescriptionElement = document.querySelector("#profile-bio");
 
 function openPopup() {
+  formNameElement.value = profileNameElement.textContent;
+  formDescriptionElement.value = profileDescriptionElement.textContent;
+
   profileFormContainer.classList.remove("modal_closed");
 }
 
@@ -65,7 +68,6 @@ profileEditForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const nameValue = evt.target.name.value;
   const descriptionValue = evt.target.description.value;
-
   profileNameElement.textContent = nameValue;
   profileDescriptionElement.textContent = descriptionValue;
 

@@ -27,7 +27,7 @@ const initialCards = [
 
 const container = document.querySelector(".main");
 const profileEditButton = container.querySelector(".profile__button-edit");
-const profileFormContainer = document.querySelector(".modal");
+const profileFormContainer = document.querySelector("#edit-popup");
 const formCloseButton = profileFormContainer.querySelector(
   ".modal__close-button"
 );
@@ -38,15 +38,23 @@ const cardsList = document.querySelector(".cards__list");
 const formNameElement = document.querySelector("#profile-name");
 const formDescriptionElement = document.querySelector("#profile-bio");
 
-function openPopup() {
-  formNameElement.value = profileNameElement.textContent;
-  formDescriptionElement.value = profileDescriptionElement.textContent;
+const cardFormContainer = document.querySelector("#add-popup");
+const cardAddButton = document.querySelector("#add-button");
+const cardAddCloseButton = cardFormContainer.querySelector(
+  ".modal__close-button"
+);
+const cardAddForm = document.querySelector("#modal-photo-form");
 
-  profileFormContainer.classList.remove("modal_closed");
+function openPopup(popup) {
+  popup.classList.remove("modal_closed");
 }
 
-function closePopup() {
-  profileFormContainer.classList.add("modal_closed");
+function closePopup(popup) {
+  popup.classList.add("modal_closed");
+}
+
+function renderCard(cardEl, container) {
+  container.append(cardEl);
 }
 
 function getCardElement(data) {
@@ -54,24 +62,66 @@ function getCardElement(data) {
   const cards = cardElement.querySelector(".cards__list-item").cloneNode(true);
   const cardImage = cards.querySelector(".cards__list-image");
   const cardTitle = cards.querySelector(".cards__list-content-title");
+
+  const cardLikeButton = cards.querySelector(".cards__like-button");
+  cardLikeButton.addEventListener("click", (evt) => {
+    evt.target.classList.toggle("cards__like-button_active");
+  });
+
+  const trashButton = cards.querySelector(".cards__trash-button");
+  trashButton.addEventListener("click", () => {
+    const cardItem = trashButton.closest(".cards__list-item");
+    cardItem.remove();
+  });
+
   cardTitle.textContent = data.name;
   cardImage.setAttribute("src", data.link);
   cardImage.setAttribute("alt", `${data.name}`);
-  cardsList.append(cards);
+  return cards;
 }
 
-profileEditButton.addEventListener("click", openPopup);
+profileEditButton.addEventListener("click", () => {
+  formNameElement.value = profileNameElement.textContent;
+  formDescriptionElement.value = profileDescriptionElement.textContent;
 
-formCloseButton.addEventListener("click", closePopup);
+  openPopup(profileFormContainer);
+});
 
-profileEditForm.addEventListener("submit", function (evt) {
+formCloseButton.addEventListener("click", () => {
+  closePopup(profileFormContainer);
+});
+
+cardAddCloseButton.addEventListener("click", () => {
+  closePopup(cardFormContainer);
+});
+
+cardAddButton.addEventListener("click", () => {
+  openPopup(cardFormContainer);
+});
+
+profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const nameValue = evt.target.name.value;
   const descriptionValue = evt.target.description.value;
   profileNameElement.textContent = nameValue;
   profileDescriptionElement.textContent = descriptionValue;
 
-  closePopup();
+  closePopup(profileFormContainer);
 });
 
-initialCards.forEach(getCardElement);
+cardAddForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = evt.target.title.value;
+  const link = evt.target.link.value;
+  const cardView = getCardElement({
+    name,
+    link,
+  });
+  renderCard(cardView, cardsList);
+  closePopup(cardFormContainer);
+});
+
+initialCards.forEach(function (data) {
+  const cardView = getCardElement(data);
+  renderCard(cardView, cardsList);
+});

@@ -139,6 +139,7 @@
 }
 
 .modal__caption {
+  margin: 0;
   position: absolute;
   top: calc(100% + 10px);
   left: 0;

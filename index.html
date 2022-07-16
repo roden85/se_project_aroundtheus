@@ -48,7 +48,7 @@
 
     <section class="modal modal_closed" id="add-popup">
       <div class="modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button modal__close-form"></button>
         <h3 class="modal__header">New Place</h3>
         <form action="#" class="modal__form" id="modal-photo-form" name="form">
           <fieldset class="modal__fieldset">
@@ -75,7 +75,7 @@
             <button
               type="submit"
               class="modal__form-submit"
-              id="submit-button"
+              id="create-button"
               name="submit-button"
             >
               Create
@@ -87,7 +87,7 @@
 
     <section class="modal modal_closed" id="edit-popup">
       <div class="modal__container">
-        <button class="modal__close-button"></button>
+        <button class="modal__close-button modal__close-form"></button>
         <h3 class="modal__header">Edit profile</h3>
         <form
           action="#"
@@ -126,6 +126,14 @@
             </button>
           </fieldset>
         </form>
+      </div>
+    </section>
+
+    <section class="modal modal_closed modal__preview" id="modal__preview">
+      <div class="modal__container modal__container_type_preview">
+        <button class="modal__close-button modal__close_type_preview"></button>
+        <img class="modal__preview-image" src="#" alt="#" />
+        <p class="modal__caption"></p>
       </div>
     </section>
 

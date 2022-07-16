@@ -45,7 +45,9 @@ const cardAddCloseButton = cardFormContainer.querySelector(
 );
 const cardAddForm = document.querySelector("#modal-photo-form");
 const imageModal = document.querySelector("#modal__preview");
-const imageCloseButton = document.querySelector(".modal__close_type_preview");
+const imageCloseButton = document.querySelector(
+  ".modal__close-button_type_preview"
+);
 
 function openPopup(popup) {
   popup.classList.remove("modal_closed");

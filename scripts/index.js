@@ -44,6 +44,8 @@ const cardAddCloseButton = cardFormContainer.querySelector(
   ".modal__close-button"
 );
 const cardAddForm = document.querySelector("#modal-photo-form");
+const imageModal = document.querySelector("#modal__preview");
+const imageCloseButton = document.querySelector(".modal__close_type_preview");
 
 function openPopup(popup) {
   popup.classList.remove("modal_closed");
@@ -54,7 +56,7 @@ function closePopup(popup) {
 }
 
 function renderCard(cardEl, container) {
-  container.append(cardEl);
+  container.prepend(cardEl);
 }
 
 function getCardElement(data) {
@@ -72,6 +74,14 @@ function getCardElement(data) {
   trashButton.addEventListener("click", () => {
     const cardItem = trashButton.closest(".cards__list-item");
     cardItem.remove();
+  });
+
+  cardImage.addEventListener("click", function () {
+    const modalImageEl = imageModal.querySelector(".modal__preview-image");
+    const modalCaption = imageModal.querySelector(".modal__caption");
+    modalImageEl.setAttribute("src", data.link);
+    modalCaption.textContent = data.name;
+    openPopup(imageModal);
   });
 
   cardTitle.textContent = data.name;
@@ -99,6 +109,10 @@ cardAddButton.addEventListener("click", () => {
   openPopup(cardFormContainer);
 });
 
+imageCloseButton.addEventListener("click", () => {
+  closePopup(imageModal);
+});
+
 profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const nameValue = evt.target.name.value;
@@ -113,15 +127,16 @@ cardAddForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = evt.target.title.value;
   const link = evt.target.link.value;
-  const cardView = getCardElement({
-    name,
-    link,
-  });
-  renderCard(cardView, cardsList);
+  const cardView = {
+    name: name,
+    link: link,
+  };
+  const card = getCardElement(cardView);
+  renderCard(card, cardsList);
   closePopup(cardFormContainer);
 });
 
 initialCards.forEach(function (data) {
   const cardView = getCardElement(data);
-  renderCard(cardView, cardsList);
+  cardsList.appendChild(cardView);
 });

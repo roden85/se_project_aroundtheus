@@ -25,6 +25,8 @@ const initialCards = [
   },
 ];
 
+//constants
+
 const container = document.querySelector(".main");
 const profileEditButton = container.querySelector(".profile__button-edit");
 const profileFormContainer = document.querySelector("#edit-popup");
@@ -50,6 +52,11 @@ const imageCloseButton = document.querySelector(
 );
 const modalImageEl = imageModal.querySelector(".modal__preview-image");
 const modalCaption = imageModal.querySelector(".modal__caption");
+// const formElement = document.querySelector(".modal__form");
+// const formInput = formElement.querySelectorAll(".modal__form-input");
+// const modalSubmitBtn = formElement.querySelectorAll(".modal__form-submit");
+
+// functions
 
 function openPopup(popup) {
   popup.classList.add("modal_opened");
@@ -58,6 +65,22 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
 }
+
+// function showError(input) {
+//   input.classList.add("modal__form-input_invalid");
+// }
+
+// function hideError(input) {
+//   input.classList.remove("modal__form-input_invalid");
+// }
+
+// function disableButton(button) {
+//   button.classList.add("modal__btn_disabled");
+// }
+
+// function enableButton(button) {
+//   button.classList.remove("modal__btn_disabled");
+// }
 
 function renderCard(cardEl, container) {
   container.prepend(cardEl);
@@ -92,6 +115,16 @@ function getCardElement(data) {
   return card;
 }
 
+// function checkInputValidity() {
+//   if (!formInput.validity.valid) {
+//     showError(formInput);
+//   } else {
+//     hideError(formInput);
+//   }
+// }
+
+// event listeners
+
 profileEditButton.addEventListener("click", () => {
   formNameElement.value = profileNameElement.textContent;
   formDescriptionElement.value = profileDescriptionElement.textContent;
@@ -114,6 +147,14 @@ cardAddButton.addEventListener("click", () => {
 imageCloseButton.addEventListener("click", () => {
   closePopup(imageModal);
 });
+
+// formElement.addEventListener("submit", (evt) => {
+//   evt.preventDefault();
+// });
+
+// formElement.addEventListener("input", () => {
+//   checkInputValidity();
+// });
 
 profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -138,6 +179,8 @@ cardAddForm.addEventListener("submit", (evt) => {
   evt.target.reset();
   closePopup(cardFormContainer);
 });
+
+//loops
 
 initialCards.forEach(function (data) {
   const cardView = getCardElement(data);

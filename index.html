@@ -50,33 +50,48 @@
       <div class="modal__container">
         <button class="modal__close-button modal__close-form"></button>
         <h3 class="modal__header">New Place</h3>
-        <form action="#" class="modal__form" id="modal-photo-form" name="form">
+        <form
+          action="#"
+          class="modal__form"
+          id="modal-photo-form"
+          name="form"
+          novalidate
+        >
           <fieldset class="modal__fieldset">
-            <input
-              type="text"
-              class="modal__form-input"
-              id="photo-name"
-              name="title"
-              placeholder="Title"
-              required
-              value=""
-            />
-            <input
-              type="text"
-              class="modal__form-input"
-              id="url-link"
-              name="link"
-              placeholder="Image link"
-              required
-              value=""
-            />
+            <div class="modal__input-wrapper">
+              <input
+                type="text"
+                class="modal__form-input"
+                id="photo-name"
+                name="title"
+                placeholder="Title"
+                minlength="1"
+                maxlength="30"
+                required
+                value=""
+              />
+              <span class="modal__error" id="photo-name-error"></span>
+            </div>
+            <div class="modal__input-wrapper">
+              <input
+                type="url"
+                class="modal__form-input"
+                id="url-link"
+                name="link"
+                placeholder="Image link"
+                required
+                value=""
+              />
+              <span class="modal__error" id="url-link-error"></span>
+            </div>
           </fieldset>
           <fieldset class="modal__fieldset">
             <button
               type="submit"
-              class="modal__form-submit"
+              class="modal__form-submit modal__btn_disabled"
               id="create-button"
               name="submit-button"
+              disabled
             >
               Create
             </button>
@@ -94,26 +109,37 @@
           class="modal__form"
           id="modal-profile-form"
           name="form"
+          novalidate
         >
           <fieldset class="modal__fieldset">
-            <input
-              type="text"
-              class="modal__form-input"
-              id="profile-name"
-              name="name"
-              placeholder="Name"
-              required
-              value=""
-            />
-            <input
-              type="text"
-              class="modal__form-input"
-              id="profile-bio"
-              name="description"
-              placeholder="Description"
-              required
-              value=""
-            />
+            <div class="modal__input-wrapper">
+              <input
+                type="text"
+                class="modal__form-input"
+                id="profile-name"
+                name="name"
+                placeholder="Name"
+                minlength="2"
+                maxlength="40"
+                required
+                value=""
+              />
+              <span class="modal__error" id="profile-name-error"></span>
+            </div>
+            <div class="modal__input-wrapper">
+              <input
+                type="text"
+                class="modal__form-input"
+                id="profile-bio"
+                name="description"
+                placeholder="Description"
+                minlength="2"
+                maxlength="200"
+                required
+                value=""
+              />
+              <span class="modal__error" id="profile-bio-error"></span>
+            </div>
           </fieldset>
           <fieldset class="modal__fieldset">
             <button
@@ -167,5 +193,6 @@
     </template>
 
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>

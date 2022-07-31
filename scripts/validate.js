@@ -5,7 +5,7 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
   submitButtonSelector: ".modal__form-submit",
-  inactiveButtonClass: "modal__btn_disabled",
+  inactiveButtonClass: "modal__form_btn_disabled",
   inputErrorClass: "modal_form_type_error",
   errorClass: "modal__error_visible",
 };

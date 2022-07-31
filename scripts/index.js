@@ -52,35 +52,34 @@ const imageCloseButton = document.querySelector(
 );
 const modalImageEl = imageModal.querySelector(".modal__preview-image");
 const modalCaption = imageModal.querySelector(".modal__caption");
-// const formElement = document.querySelector(".modal__form");
-// const formInput = formElement.querySelectorAll(".modal__form-input");
-// const modalSubmitBtn = formElement.querySelectorAll(".modal__form-submit");
+const modals = [...document.querySelectorAll(".modal")];
+
+const handleCloseByEsc = (evt) => {
+  if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closePopup(activeModal);
+  }
+};
+
+const handleOutsideClick = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+};
 
 // functions
 
 function openPopup(popup) {
   popup.classList.add("modal_opened");
+  document.addEventListener("keydown", handleCloseByEsc);
+  popup.addEventListener("mousedown", handleOutsideClick);
 }
 
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleCloseByEsc);
+  popup.removeEventListener("mousedown", handleOutsideClick);
 }
-
-// function showError(input) {
-//   input.classList.add("modal__form-input_invalid");
-// }
-
-// function hideError(input) {
-//   input.classList.remove("modal__form-input_invalid");
-// }
-
-// function disableButton(button) {
-//   button.classList.add("modal__btn_disabled");
-// }
-
-// function enableButton(button) {
-//   button.classList.remove("modal__btn_disabled");
-// }
 
 function renderCard(cardEl, container) {
   container.prepend(cardEl);
@@ -115,14 +114,6 @@ function getCardElement(data) {
   return card;
 }
 
-// function checkInputValidity() {
-//   if (!formInput.validity.valid) {
-//     showError(formInput);
-//   } else {
-//     hideError(formInput);
-//   }
-// }
-
 // event listeners
 
 profileEditButton.addEventListener("click", () => {
@@ -147,14 +138,6 @@ cardAddButton.addEventListener("click", () => {
 imageCloseButton.addEventListener("click", () => {
   closePopup(imageModal);
 });
-
-// formElement.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
-// });
-
-// formElement.addEventListener("input", () => {
-//   checkInputValidity();
-// });
 
 profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();

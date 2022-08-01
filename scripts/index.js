@@ -23,8 +23,8 @@ const cardAddCloseButton = cardFormContainer.querySelector(
 const imageCloseButton = document.querySelector(
   ".modal__close-button_type_preview"
 );
-const formSubmitButton = document.querySelector(".modal__form-submit");
-const modalCloseButton = document.querySelectorAll(".modal__close-button");
+const cardFormSubmitButton = document.querySelector(".modal__form-submit");
+const modalCloseButtons = document.querySelectorAll(".modal__close-button");
 
 //cards
 const initialCards = [
@@ -91,7 +91,7 @@ function closePopup(popup) {
   popup.removeEventListener("mousedown", handleOutsideClick);
 }
 
-modalCloseButton.forEach((button) => {
+modalCloseButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => {
     closePopup(popup);
@@ -168,7 +168,7 @@ cardAddForm.addEventListener("submit", (evt) => {
   const card = getCardElement(cardView);
   renderCard(card, cardsList);
   evt.target.reset();
-  formSubmitButton.disabled = true;
-  formSubmitButton.classList.add("modal__form-submit_disabled");
+  cardFormSubmitButton.disabled = true;
+  cardFormSubmitButton.classList.add("modal__form-submit_disabled");
   closePopup(cardFormContainer);
 });

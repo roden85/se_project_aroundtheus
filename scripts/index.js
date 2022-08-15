@@ -1,5 +1,5 @@
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
+import FormValidator from "./formvalidator.js";
+import Card from "./card.js";
 import { openPopup, closePopup } from "./utils.js";
 
 // constants

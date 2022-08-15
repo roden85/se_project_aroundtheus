@@ -69,5 +69,3 @@ class FormValidator {
 }
 
 export default FormValidator;
-
-console.log("test");

@@ -1,4 +1,4 @@
-import FormValidator from "../scripts/formvalidator.js";
+import FormValidator from "./scripts/formvalidator.js";
 import Card from "./card.js";
 import { openPopup, closePopup } from "./utils.js";
 

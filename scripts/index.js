@@ -19,7 +19,6 @@ const cardAddForm = document.querySelector("#modal-photo-form");
 
 const profileEditButton = container.querySelector(".profile__button-edit");
 const cardAddButton = document.querySelector("#add-button");
-const cardFormSubmitButton = document.querySelector(".modal__form-submit");
 const modalCloseButtons = document.querySelectorAll(".modal__close-button");
 
 //cards
@@ -54,6 +53,7 @@ const cardsList = document.querySelector(".cards__list");
 //open/close popup
 
 cardAddButton.addEventListener("click", () => {
+  addFormValidator.resetValidation();
   openPopup(cardFormContainer);
 });
 
@@ -68,13 +68,13 @@ function renderCard(cardEl, container) {
   container.prepend(cardEl);
 }
 
-function getCardData(data) {
+function createCard(data) {
   const card = new Card(data, "#cards-template").getView();
   return card;
 }
 
 initialCards.forEach(function (data) {
-  const cardView = getCardData(data);
+  const cardView = createCard(data);
   cardsList.appendChild(cardView, cardsList);
 });
 // set form values
@@ -82,7 +82,7 @@ initialCards.forEach(function (data) {
 profileEditButton.addEventListener("click", () => {
   formNameElement.value = profileNameElement.textContent;
   formDescriptionElement.value = profileDescriptionElement.textContent;
-
+  addFormValidator.resetValidation();
   openPopup(profileFormContainer);
 });
 
@@ -92,7 +92,6 @@ profileEditForm.addEventListener("submit", (evt) => {
   const descriptionValue = evt.target.description.value;
   profileNameElement.textContent = nameValue;
   profileDescriptionElement.textContent = descriptionValue;
-
   closePopup(profileFormContainer);
 });
 
@@ -100,14 +99,12 @@ cardAddForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = evt.target.title.value;
   const link = evt.target.link.value;
-  const cardView = getCardData({
+  const cardView = createCard({
     name: name,
     link: link,
   });
   renderCard(cardView, cardsList);
   evt.target.reset();
-  cardFormSubmitButton.disabled = true;
-  cardFormSubmitButton.classList.add("modal__form-submit_disabled");
   closePopup(cardFormContainer);
 });
 

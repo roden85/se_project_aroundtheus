@@ -5,11 +5,12 @@ const modalImageEl = imageModal.querySelector(".modal__preview-image");
 const modalCaption = imageModal.querySelector(".modal__caption");
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleLikeButton) {
     this._name = data.name;
     this._link = data.link;
 
     this._cardSelector = cardSelector;
+    this._likeButton = null;
   }
 
   _getTemplate() {
@@ -22,8 +23,9 @@ class Card {
   }
 
   _setEventListeners() {
-    const likeButton = this._element.querySelector(".cards__like-button");
-    likeButton.addEventListener("click", () => {
+    this._likeButton = this._element.querySelector(".cards__like-button");
+
+    this._likeButton.addEventListener("click", () => {
       this._handleLikeButton();
     });
 
@@ -41,8 +43,7 @@ class Card {
   }
 
   _handleLikeButton() {
-    const likeButton = this._element.querySelector(".cards__like-button");
-    likeButton.classList.toggle("cards__like-button_active");
+    this._likeButton.classList.toggle("cards__like-button_active");
   }
 
   _handleDeleteCard() {
@@ -66,7 +67,7 @@ class Card {
       .querySelector(".cards__list-image")
       .setAttribute("src", this._link);
     this._element
-      .querySelector(".cards__list-content-title")
+      .querySelector(".cards__list-image")
       .setAttribute("alt", `${this._name}`);
 
     this._setEventListeners();

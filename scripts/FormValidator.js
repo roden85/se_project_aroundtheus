@@ -59,9 +59,21 @@ class FormValidator {
     });
   }
 
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputEls.forEach((input) => {
+      this._hideInputError(input);
+    });
+  }
+
   enableValidation() {
+    const cardFormSubmitButton = document.querySelector(".modal__form-submit");
+
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      cardFormSubmitButton.disabled = true;
+      cardFormSubmitButton.classList.add("modal__form-submit_disabled");
     });
 
     this._setEventListeners();

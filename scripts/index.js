@@ -82,7 +82,7 @@ initialCards.forEach(function (data) {
 profileEditButton.addEventListener("click", () => {
   formNameElement.value = profileNameElement.textContent;
   formDescriptionElement.value = profileDescriptionElement.textContent;
-  addFormValidator.resetValidation();
+  editFormValidator.resetValidation();
   openPopup(profileFormContainer);
 });
 

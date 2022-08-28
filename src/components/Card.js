@@ -1,4 +1,4 @@
-import { openPopup } from "./utils.js";
+import { openPopup } from "../scripts/utils.js";
 
 const imageModal = document.querySelector("#modal__preview");
 const modalImageEl = imageModal.querySelector(".modal__preview-image");

@@ -1,16 +1,17 @@
-import { openPopup } from "../scripts/utils.js";
+// import { openPopup } from "../scripts/utils.js";
 
-const imageModal = document.querySelector("#modal__preview");
-const modalImageEl = imageModal.querySelector(".modal__preview-image");
-const modalCaption = imageModal.querySelector(".modal__caption");
+// const imageModal = document.querySelector("#modal__preview");
+// const modalImageEl = imageModal.querySelector(".modal__preview-image");
+// const modalCaption = imageModal.querySelector(".modal__caption");
 
 class Card {
-  constructor(data, cardSelector, handleLikeButton) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
 
     this._cardSelector = cardSelector;
     this._likeButton = null;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -38,7 +39,7 @@ class Card {
     this._element
       .querySelector(".cards__list-image")
       .addEventListener("click", () => {
-        this._handlePreviewImage();
+        this._handleCardClick({ link: this._link, name: this._name });
       });
   }
 
@@ -50,26 +51,24 @@ class Card {
     this._element.remove();
   }
 
-  _handlePreviewImage() {
-    modalImageEl.setAttribute("src", this._link);
-    modalImageEl.setAttribute("alt", this._name);
-    modalCaption.textContent = this._name;
-    openPopup(imageModal);
-  }
+  // _handlePreviewImage() {
+  //   modalImageEl.setAttribute("src", this._link);
+  //   modalImageEl.setAttribute("alt", this._name);
+  //   modalCaption.textContent = this._name;
+  //   openPopup(imageModal);
+  // }
 
   getView() {
     this._element = this._getTemplate();
 
+    console.log(this._element);
+    console.log(this._name);
+    this._element.querySelector(".cards__list-content-title").textContent =
+      this._name;
+    this._element.querySelector(".cards__list-image").src = this._link;
     this._element.querySelector(
-      ".cards__list-content-title"
-    ).textContent = `${this._name}`;
-    this._element
-      .querySelector(".cards__list-image")
-      .setAttribute("src", this._link);
-    this._element
-      .querySelector(".cards__list-image")
-      .setAttribute("alt", `${this._name}`);
-
+      ".cards__list-image"
+    ).alt = `Photo of ${this._name}`;
     this._setEventListeners();
     return this._element;
   }

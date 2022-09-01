@@ -12,7 +12,7 @@ class Section {
   }
 
   addItem(card) {
-    this._element.append(card);
+    this._element.prepend(card);
   }
 }
 

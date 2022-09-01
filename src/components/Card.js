@@ -1,12 +1,6 @@
-// import { openPopup } from "../scripts/utils.js";
-
-// const imageModal = document.querySelector("#modal__preview");
-// const modalImageEl = imageModal.querySelector(".modal__preview-image");
-// const modalCaption = imageModal.querySelector(".modal__caption");
-
 class Card {
   constructor(data, cardSelector, handleCardClick) {
-    this._name = data.name;
+    this._name = data.title;
     this._link = data.link;
 
     this._cardSelector = cardSelector;
@@ -51,18 +45,8 @@ class Card {
     this._element.remove();
   }
 
-  // _handlePreviewImage() {
-  //   modalImageEl.setAttribute("src", this._link);
-  //   modalImageEl.setAttribute("alt", this._name);
-  //   modalCaption.textContent = this._name;
-  //   openPopup(imageModal);
-  // }
-
   getView() {
     this._element = this._getTemplate();
-
-    console.log(this._element);
-    console.log(this._name);
     this._element.querySelector(".cards__list-content-title").textContent =
       this._name;
     this._element.querySelector(".cards__list-image").src = this._link;

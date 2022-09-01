@@ -23,7 +23,8 @@ const createCard = (data) => {
   const card = new Card(data, "#cards-template", () => {
     handleCardClick(data);
   });
-  return cardsList.prepend(card.getView());
+  // return cardsList.prepend(card.getView());
+  return card.getView();
 };
 
 const cardSection = new Section(
@@ -67,16 +68,16 @@ const user = new UserInfo({
 
 const editForm = new PopupWithForm({
   popupSelector: "#edit-popup",
-  handleFormSubmit: (data) => {
-    user.setUserInfo(data);
+  handleFormSubmit: ({ name, description }) => {
+    user.setUserInfo({ name, description });
     editForm.close();
   },
 });
 
 profileEditButton.addEventListener("click", () => {
-  const { name, bio } = user.getUserInfo();
-  formNameElement.value = name;
-  formDescriptionElement.value = bio;
+  const currentUser = user.getUserInfo();
+  formNameElement.value = currentUser.name;
+  formDescriptionElement.value = currentUser.description;
   editForm.open();
   editFormValidator.resetValidation();
 });

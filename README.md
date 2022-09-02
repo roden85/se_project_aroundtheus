@@ -5,10 +5,11 @@
 - Figma
 - Images
 - JavaScript
-- Object Oriented Programming
+- Interfaces in Object Oriented Programming
 - Responsive Design
 - Modules
 - DOM
+- Webpack
 
 **Description**
 

@@ -1,4 +1,4 @@
-import "../pages/index.css";
+import "./index.css";
 
 import {
   initialCards,
@@ -10,7 +10,6 @@ import {
   cardAddForm,
   formNameElement,
   formDescriptionElement,
-  cardsList,
 } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
@@ -23,7 +22,6 @@ const createCard = (data) => {
   const card = new Card(data, "#cards-template", () => {
     handleCardClick(data);
   });
-  // return cardsList.prepend(card.getView());
   return card.getView();
 };
 
@@ -74,10 +72,14 @@ const editForm = new PopupWithForm({
   },
 });
 
-profileEditButton.addEventListener("click", () => {
+const fillProfileForm = () => {
   const currentUser = user.getUserInfo();
   formNameElement.value = currentUser.name;
   formDescriptionElement.value = currentUser.description;
+};
+
+profileEditButton.addEventListener("click", () => {
+  fillProfileForm();
   editForm.open();
   editFormValidator.resetValidation();
 });

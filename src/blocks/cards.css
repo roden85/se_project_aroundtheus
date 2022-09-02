@@ -19,6 +19,7 @@
 .cards__list-image {
   width: 100%;
   height: 282px;
+  cursor: pointer;
 }
 
 .cards__list-content {

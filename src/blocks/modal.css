@@ -139,13 +139,18 @@
 }
 
 .modal__form-submit_disabled {
-  background-color: #e5e5e5;
+  background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.2);
+  cursor: default;
 }
 
 .modal__form-submit:hover {
   opacity: 0.8;
+}
+
+.modal__form-submit_disabled:hover {
+  opacity: 1;
 }
 
 .modal__container_type_preview {

@@ -17,4 +17,4 @@ This project focuses on DOM manipulation by implementing basic and advanced Java
 
 **GitHub Pages**
 
-[Link to the project on GitHub Pages](https://roden85.github.io/se_project_aroundtheus/)
+[Link to the project on GitHub Pages](https://roden85.github.io/se_project_aroundtheus/dist)

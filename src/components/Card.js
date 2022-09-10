@@ -44,8 +44,6 @@ class Card {
   };
 
   getView() {
-    // this._listImg = this._element.querySelector(".cards__list-image");
-
     this._element = this._getTemplate();
 
     this._imgCaption = this._element.querySelector(
@@ -55,11 +53,7 @@ class Card {
 
     console.log(this._imgCaption);
     this._imgCaption.textContent = this._name;
-    // this._element.querySelector(".cards__list-image").src = this._link;
     this._listImg.src = this._link;
-    // this._element.querySelector(
-    //   ".cards__list-image"
-    // ).alt = `Photo of ${this._name}`;
     this._listImg.alt = `Photo of ${this._name}`;
     this._setEventListeners();
     return this._element;

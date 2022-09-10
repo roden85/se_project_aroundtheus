@@ -7,15 +7,12 @@ export const formDescriptionElement = document.querySelector("#profile-bio");
 export const cardAddForm = document.querySelector("#modal-photo-form");
 export const cardsList = document.querySelector(".cards__list");
 
-// //buttons
-
 export const profileEditButton = document.querySelector(
   ".profile__button-edit"
 );
 
 export const cardAddButton = document.querySelector("#add-button");
 
-//cards
 export const initialCards = [
   {
     title: "Yosemite Valley",
@@ -42,7 +39,6 @@ export const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-// export const cardsList = document.querySelector(".cards__list");
 
 export const selectors = {
   cardsList: ".cards__list",

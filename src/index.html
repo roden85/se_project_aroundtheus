@@ -18,11 +18,13 @@
     <main class="main">
       <section class="profile">
         <div class="profile__content">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Profile Photo"
-            class="profile__image"
-          />
+          <div class="profile__image-wrapper">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Profile Photo"
+              class="profile__image"
+            />
+          </div>
           <div class="profile__heading">
             <div class="profile__header">
               <h1 class="profile__name">Jacques Cousteau</h1>
@@ -159,6 +161,46 @@
       </div>
     </section>
 
+    <section class="modal" id="profile-image-popup">
+      <div class="modal__container">
+        <button class="modal__close-button modal__close-form"></button>
+        <h3 class="modal__header">Change profile picture</h3>
+        <form
+          action="#"
+          class="modal__form"
+          id="modal-profile-image-form"
+          name="profile-image-form"
+          novalidate
+        >
+          <fieldset class="modal__fieldset">
+            <div class="modal__input-wrapper">
+              <input
+                type="url"
+                class="modal__form-input"
+                id="url-link"
+                name="link"
+                placeholder="Profile image link"
+                required
+                value=""
+              />
+              <span class="modal__error" id="url-link-error"></span>
+            </div>
+          </fieldset>
+          <fieldset class="modal__fieldset">
+            <button
+              type="submit"
+              class="modal__form-submit modal__form-submit_disabled"
+              id="create-button"
+              name="submit-button"
+              disabled
+            >
+              Create
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
     <section class="modal" id="modal__preview">
       <div class="modal__container modal__container_type_preview">
         <button
@@ -166,6 +208,21 @@
         ></button>
         <img class="modal__preview-image" src="#" alt="#" />
         <p class="modal__caption"></p>
+      </div>
+    </section>
+
+    <section class="modal">
+      <div class="modal__container modal__container_type_delete">
+        <button class="modal__close-button modal__close-delete"></button>
+        <h3 class="modal__header modal__header_type_delete">Are you sure?</h3>
+        <button
+          type="submit"
+          class="modal__form-submit modal__form-submit_type_delete"
+          name="submit-button"
+          disabled
+        >
+          Yes
+        </button>
       </div>
     </section>
 

@@ -50,8 +50,6 @@ class Card {
       ".cards__list-content-title"
     );
     this._listImg = this._element.querySelector(".cards__list-image");
-
-    console.log(this._imgCaption);
     this._imgCaption.textContent = this._name;
     this._listImg.src = this._link;
     this._listImg.alt = `Photo of ${this._name}`;
